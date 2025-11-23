@@ -2,7 +2,6 @@ generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native"]
   
-  // --- AGREGA ESTA LÍNEA MÁGICA ---
   engineType    = "binary"
 }
 
