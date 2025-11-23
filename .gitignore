@@ -1,0 +1,40 @@
+# --- Dependencias ---
+node_modules/
+
+# --- Build / Compilados (TypeScript) ---
+dist/
+build/
+
+# --- Variables de entorno (¡CRÍTICO PARA SEGURIDAD!) ---
+.env
+.env.test
+.env.production
+.env.local
+
+# --- Base de Datos SQLite ---
+# Ignoramos cualquier archivo .db para no subir datos reales
+*.db
+*.db-journal
+# Específicos de Prisma (por si acaso)
+prisma/*.db
+prisma/*.db-journal
+
+# --- Logs del Sistema ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Testing (Jest) ---
+coverage/
+
+# --- Archivos del Sistema Operativo (Basura) ---
+.DS_Store
+Thumbs.db
+
+# --- IDEs (Configuraciones personales de tu editor) ---
+.vscode/
+.idea/
+*.swp
+```

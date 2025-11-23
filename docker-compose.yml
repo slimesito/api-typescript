@@ -1,0 +1,15 @@
+# RUTA DEL ARCHIVO: docker-compose.yml
+services:
+  api:
+    build: .
+    ports:
+      - "${PORT}:${PORT}" # Ahora usa la variable del .env
+    volumes:
+      - ./src:/app/src
+      - ./prisma:/app/prisma
+    
+    # --- CAMBIO AQUÍ: Usar el archivo .env ---
+    env_file:
+      - .env
+      
+    command: sh -c "npx prisma migrate deploy && npm run dev"
