@@ -201,7 +201,7 @@ curl -X POST http://localhost:3000/api/auth/logout \
 
 El proyecto incluye dos modos de prueba:
 
-### **1. Test Aislado (Recomendado) 🛡️**
+### **Test Aislado 🛡️**
 
 Crea una base de datos temporal (`test.db`) y NO borra tus datos reales.
 
@@ -209,20 +209,6 @@ Crea una base de datos temporal (`test.db`) y NO borra tus datos reales.
 docker-compose exec api npm run test:isolated
 ```
 
-------------------------------------------------------------------------
+---
 
-## ⚠️ Solución de Problemas Comunes
-
-### **Error: `The table main.User does not exist`**
-
-**Causa:** La base de datos está vacía.\
-**Solución:**
-
-``` bash
-docker-compose exec api npx prisma migrate dev
-```
-
-### **Error: `Email already exists` al registrar**
-
-**Causa:** El usuario ya existe en la DB.\
-**Solución:** Usa `/login` o borra `dev.db`.
+## 💻 Desarrollado por William Villegas
