@@ -75,6 +75,56 @@ La API estará disponible en: **http://localhost:3000**
 ------------------------------------------------------------------------
 
 
+## ⚡ Probando con CURL
+
+### **Puedes probar la API directamente desde tu terminal**
+
+**1. Registrar Usuario**
+
+``` bash
+curl -X POST http://localhost:3000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Admin", "email": "admin@test.com", "password": "password123"}'
+```
+
+**2. Iniciar Sesión (Login)**
+
+    curl -X POST http://localhost:3000/api/auth/login \ 
+    -H "Content-Type: application/json" \
+    -d '{"email": "admin@test.com", "password": "password123"}'
+
+**3. Crear Autor (Requiere Token)**
+
+*Reemplaza <TU_TOKEN> con el token obtenido en el login.*
+
+``` bash
+curl -X POST http://localhost:3000/api/authors \
+  -H "Authorization: Bearer <TU_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Isaac Asimov", "email": "isaac@gmail.com"}'
+```
+
+**4. Crear Libro (Requiere Token)**
+
+*Esto disparará el Job en segundo plano.*
+
+``` bash
+url -X POST http://localhost:3000/api/books \
+  -H "Authorization: Bearer <TU_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Yo, Robot", "description": "Ciencia Ficción", "authorId": 1}'
+```
+
+**5. Cerrar Sesión (Logout)**
+
+``` bash
+curl -X POST http://localhost:3000/api/auth/logout \
+  -H "Authorization: Bearer <TU_TOKEN>"
+```
+
+------------------------------------------------------------------------
+
+
 ## 🔗 Endpoints de la API
 
 ### 🔐 **Autenticación**
