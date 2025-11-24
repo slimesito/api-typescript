@@ -3,7 +3,6 @@ import { eventBus, EVENTS } from '../core/event-bus';
 
 const prisma = new PrismaClient();
 
-// Esta función inicializa el escuchador
 export const initBookCounterJob = () => {
   console.log('[JOBS] Inicializando Job de Conteo de Libros...');
 

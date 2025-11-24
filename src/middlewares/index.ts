@@ -1,11 +1,10 @@
-// RUTA: src/middlewares/index.ts
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { AnyZodObject, ZodError } from 'zod';
 import { apiResponse } from '../core/utils';
 import { config } from '../config'; 
 
-// --- 1. Definimos una interfaz personalizada aquí mismo ---
+// --- 1. Se define una interfaz personalizada ---
 // Esto extiende la Request normal de Express para agregarle 'user'
 export interface AuthRequest extends Request {
   user?: {
@@ -26,8 +25,7 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
   try {
     const decoded = jwt.verify(token, config.jwt.secret);
     
-    // --- 2. Hacemos "Casting" explícito ---
-    // Le decimos a TS: "Trata a 'req' como si fuera un 'AuthRequest'"
+    // --- 2. Se hace "Casting" explícito ---
     (req as AuthRequest).user = decoded as any;
     
     next();

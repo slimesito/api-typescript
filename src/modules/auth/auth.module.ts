@@ -52,13 +52,7 @@ router.post('/login', validateRequest(LoginSchema), async (req, res) => {
   return apiResponse(res, { token, user: { id: user.id, name: user.name } }, 'Login successful');
 });
 
-// --- NUEVO ENDPOINT: LOGOUT ---
 router.post('/logout', authMiddleware, (req, res) => {
-  // En una implementación JWT básica, el servidor no necesita hacer nada
-  // porque no hay sesión de base de datos.
-  // El cliente es el responsable de borrar el token.
-  
-  // (Opcional: Aquí podrías agregar el token a una "Blacklist" en Redis/DB para invalidarlo)
   
   return apiResponse(res, null, 'Logout successful.');
 });

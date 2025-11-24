@@ -9,7 +9,6 @@ describe('API Integration Tests', () => {
 
   beforeAll(async () => {
     // --- 2. INICIALIZAR EL JOB AQUÍ ---
-    // Esto es vital porque Jest no corre server.ts
 
     // Limpiar DB
     await prisma.book.deleteMany();
@@ -62,13 +61,13 @@ describe('API Integration Tests', () => {
       .set('Authorization', `Bearer ${token}`)
       .send({ title: 'Harry Potter', authorId });
 
-    // 3. Esperar al Job (Damos un poco más de tiempo por seguridad: 1s)
+    // 3. Esperar al Job
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     // 4. Verificar
     const updatedAuthor = await prisma.author.findUnique({ where: { id: authorId } });
     
-    // Debug: Si falla, esto nos dirá cuánto tiene realmente
+    // Debug: Si falla, esto dirá cuánto tiene realmente
     if (updatedAuthor?.bookCount !== 1) {
        console.log("DEBUG TEST:", updatedAuthor);
     }

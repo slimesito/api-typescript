@@ -5,17 +5,16 @@ node_modules/
 dist/
 build/
 
-# --- Variables de entorno (¡CRÍTICO PARA SEGURIDAD!) ---
+# --- Variables de entorno ---
 .env
 .env.test
 .env.production
 .env.local
 
 # --- Base de Datos SQLite ---
-# Ignoramos cualquier archivo .db para no subir datos reales
 *.db
 *.db-journal
-# Específicos de Prisma (por si acaso)
+# Prisma
 prisma/*.db
 prisma/*.db-journal
 
